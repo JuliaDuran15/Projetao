@@ -64,6 +64,21 @@ services:
     networks:
       - mynetwork
 
+      
+  vue:
+    image: node:latest
+    container_name: vue
+    restart: unless-stopped
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: npm run serve
+    ports:
+      - 8082:8080
+    networks:
+      - mynetwork
+
+
 networks:
   mynetwork:
     driver: bridge
